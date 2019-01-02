@@ -5,3 +5,7 @@ Description: mts_sense child theme for agussuhanto.net
 Author: Agus Suhanto
 Version: 1.0.0
 */
+
+h3 {
+    font-size: 20px;
+}
