@@ -5,3 +5,7 @@ Description: mts_sense child theme for agussuhanto.net
 Author: Agus Suhanto
 Version: 1.0.0
 */
+
+.post-type-index article header {
+    margin-bottom: 25px;
+}
