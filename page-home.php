@@ -84,29 +84,45 @@ if ( 'full-width' == $mts_home_layout ) {
 						$featured_categories[] = $category_id;
 						$posts_num = $section['mts_featured_category_postsnum'];
 						if ( 'latest' == $category_id ) { ?>
+
 							<h2 class="title entry-title">Latest Courses</h2>
 							<?php if( $mts_options['mts_home_layout'] == 'isotope-width') { ?>
-							<div class="content_wrap">
+								<div class="content_wrap">
+								<?php } ?>
+								<?php 
+								$args = array( 'post_type' => 'course', 'posts_per_page' => 3 );
+								$the_query = new WP_Query( $args ); ?>
+								<?php if ( $the_query->have_posts() ) : ?>
+									<?php $j = 0; while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
+										<article class="latestPost excerpt <?php echo (++$j % 3 == 0) ? 'last' : ''; ?>">
+											<?php mts_archive_post(); ?>
+										</article>
+									<?php endwhile; ?>
+									<?php wp_reset_postdata(); ?>
+								<?php endif; ?>
+								<?php if( $mts_options['mts_home_layout'] == 'isotope-width') { ?>
+								</div>
 							<?php } ?>
-							<?php 
-							$args = array( 'post_type' => 'course', 'posts_per_page' => 10 );
-							$the_query = new WP_Query( $args ); ?>
-							<?php if ( $the_query->have_posts() ) : ?>
-								<?php $j = 0; while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
-									<article class="latestPost excerpt <?php echo (++$j % 3 == 0) ? 'last' : ''; ?>">
-										<?php mts_archive_post(); ?>
-									</article>
-								<?php endwhile; ?>
-								<?php wp_reset_postdata(); ?>
-							<?php endif; ?>
+
+							<h2 class="title entry-title">Latest Posts</h2>
 							<?php if( $mts_options['mts_home_layout'] == 'isotope-width') { ?>
-							</div>
-						<?php } ?>
-							
-							<?php if ( $j !== 0 ) { // No pagination if there is no posts ?>
-								<?php mts_pagination(); ?>
-							<?php } ?>
-							
+								<div class="content_wrap">
+								<?php } ?>
+								<?php 
+								$args = array( 'post_type' => 'post', 'posts_per_page' => 3 );
+								$the_query = new WP_Query( $args ); ?>
+								<?php if ( $the_query->have_posts() ) : ?>
+									<?php $j = 0; while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
+										<article class="latestPost excerpt <?php echo (++$j % 3 == 0) ? 'last' : ''; ?>">
+											<?php mts_archive_post(); ?>
+										</article>
+									<?php endwhile; ?>
+									<?php wp_reset_postdata(); ?>
+								<?php endif; ?>
+								<?php if( $mts_options['mts_home_layout'] == 'isotope-width') { ?>
+								</div>
+							<?php } ?>							
+						
 						<?php } else { // if $category_id != 'latest': ?>
 							<div class="latestPost-category-options">
 								<h3 class="featured-category-title"><a href="<?php echo esc_url( get_category_link( $category_id ) ); ?>" title="<?php echo esc_attr( get_cat_name( $category_id ) ); ?>"><?php echo esc_html( get_cat_name( $category_id ) ); ?></a></h3>
