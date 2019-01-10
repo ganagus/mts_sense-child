@@ -60,10 +60,6 @@ Version: 1.0.0
     font-size: 14px;
 }
 
-.ad-125 li {
-    margin-bottom: 0;
-}
-
-.ad-125 li img {
-    width: 140px;
+.syntaxhighlighter {
+    margin-bottom: 30px !important;
 }
