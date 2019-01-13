@@ -39,6 +39,7 @@ Version: 1.0.0
 
 .cardSeparation {
     border-top: 1px solid #C3BEBE;
+    height: 0;
 }
 
 .badge-background {
@@ -62,4 +63,36 @@ Version: 1.0.0
 
 .mysf {
     margin-bottom: 30px;
+}
+
+.author-badge {
+    float: left;
+    margin-top: 2px;
+}
+
+.author-badge a.general {
+    background: #fff;
+}
+
+.author-badge img {
+    float: left;
+    margin: 0 30px 10px 0;
+    border-radius: 0 !important;
+}
+
+.author-badge a {
+    width: 50px;
+    height: 50px;
+    color: #fff;
+    background: #000;
+    text-align: center;
+    line-height: 50px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    display: block;
+    float: left;
+}
+
+.no-results .search-form {
+    margin-bottom: 50px;
 }
